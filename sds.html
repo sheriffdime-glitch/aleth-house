@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Safety Data Sheets · ALETH Chemical Co</title>
+<meta name="description" content="Every hazard, in writing. An SDS for every bottle in the Thirteen.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ALETH Chemical Co">
+<meta property="og:title" content="Safety Data Sheets · ALETH Chemical Co">
+<meta property="og:description" content="Every hazard, in writing. An SDS for every bottle in the Thirteen.">
+<meta property="og:url" content="https://alethchemical.com/sds.html">
+<meta property="og:image" content="https://alethchemical.com/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alethchemical.com/assets/og-card.jpg">
+<meta name="twitter:title" content="Safety Data Sheets · ALETH Chemical Co">
+<meta name="twitter:description" content="Every hazard, in writing. An SDS for every bottle in the Thirteen.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;1,500&family=Inter:wght@400;500&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css?v=mist14">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="wordmark" href="index.html">ALETH<small>CHEMICAL CO.</small></a>
+  <nav class="site-nav">
+    <a class="nav-link" href="products.html">The Thirteen</a>
+    <a class="nav-link" href="house.html">House</a>
+    <a class="nav-link is-here" href="sds.html">SDS</a>
+  </nav>
+  <a class="cart-link" href="#">Cart (<span id="cartBadge">0</span>)</a>
+</header>
+
+<section class="page-head">
+  <div class="wrap">
+    <p class="kicker mono reveal">The library</p>
+    <h1 class="reveal">Every hazard, <em>in writing.</em></h1>
+    <p class="lede reveal">A safety data sheet for every formula in the Thirteen, published as each formula ships. Every hazard and handling note, properly filed. The blends themselves stay proprietary · that part is the business.</p>
+    <div class="sds-search mt-4 reveal"><input type="search" id="sdsQ" placeholder="Search the library…" aria-label="Search safety data sheets"></div>
+  </div>
+</section>
+
+<main class="wrap">
+  <div class="sds-list" id="sdsList"></div>
+  <p class="mono" id="sdsEmpty" style="display:none;padding-bottom:var(--section)">Nothing by that name in the Thirteen.</p>
+  <p class="mono sds-note-line reveal">Every sheet is being filed now. Need one before it posts? <a href="mailto:house@alethchemical.com">house@alethchemical.com</a> · it goes out the same day.</p>
+</main>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="wordmark" href="index.html">ALETH<small>CHEMICAL CO.</small></a>
+      <p>Precision chemistry for people who notice the difference.</p>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Collection</p>
+      <a href="products.html">The Thirteen</a>
+      <a href="sds.html">Safety Data Sheets</a>
+      <a href="house.html">The House</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Fine print</p>
+      <a href="shipping.html">Shipping &amp; Returns</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="terms.html">Terms</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Find us</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/alethchemical/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+      <span class="footer-social-note mono">@alethchemical</span>
+      <a class="footer-mail" href="mailto:house@alethchemical.com">house@alethchemical.com</a>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© 2026 Aleth Chemical Co</span>
+    <span>Truth, in formulation.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script>
+(function(){
+  var list = document.getElementById('sdsList');
+  function render(q){
+    var ql = (q || '').toLowerCase();
+    var shown = window.PRODUCTS.filter(function(p){
+      return !ql || p.name.toLowerCase().indexOf(ql) > -1 || p.kind.toLowerCase().indexOf(ql) > -1;
+    });
+    list.innerHTML = shown.map(function(p){
+      return '<div class="sds-row reveal is-in" style="--acc:' + p.accent + '">' +
+        '<span class="sds-id">SDS-' + ({wheel:'WH',everything:'EV',alkaline:'AL','multi-purpose':'MU',glass:'GL','glass-ceramic':'GL',touchless:'TL',wash:'WA',strip:'ST',interior:'IN',leather:'LE',bead:'BE',polarity:'PO'}[p.id] || 'AL') + '-' + p.code + '</span>' +
+        '<span class="sds-name"><span class="sds-dot" style="display:inline-block;margin-right:0.8rem;vertical-align:baseline"></span>' + p.name + '<small>' + p.kind + '</small></span>' +
+        '<span class="sds-actions">' + (window.WAVE1.indexOf(p.id) > -1
+          ? '<a class="sds-dl" href="assets/sds/sds-' + p.id + '.pdf" download>Download SDS</a>'
+          : '<span class="sds-inbound mono">Sheet inbound</span>') + '<a class="sds-dl" href="product.html?id=' + p.id + '">View product</a></span>' +
+      '</div>';
+    }).join('');
+    document.getElementById('sdsEmpty').style.display = shown.length ? 'none' : '';
+  }
+  render('');
+  document.getElementById('sdsQ').addEventListener('input', function(e){ render(e.target.value); });
+})();
+</script>
+</body>
+</html>
