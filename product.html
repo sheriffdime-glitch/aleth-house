@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Product · ALETH Chemical Co</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ALETH Chemical Co">
+<meta property="og:title" content="Product · ALETH Chemical Co">
+<meta property="og:description" content="Precision chemistry for people who notice the difference. Thirteen formulas. Nothing hidden.">
+<meta property="og:url" content="https://alethchemical.com/product.html">
+<meta property="og:image" content="https://alethchemical.com/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alethchemical.com/assets/og-card.jpg">
+<meta name="twitter:title" content="Product · ALETH Chemical Co">
+<meta name="twitter:description" content="Precision chemistry for people who notice the difference. Thirteen formulas. Nothing hidden.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=mist15">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="wordmark" href="index.html">ALETH<small>CHEMICAL CO.</small></a>
+  <nav class="site-nav">
+    <a class="nav-link is-here" href="products.html">The Thirteen</a>
+    <a class="nav-link" href="house.html">House</a>
+    <a class="nav-link" href="sds.html">SDS</a>
+  </nav>
+  <a class="cart-link" href="#">Cart (<span id="cartBadge">0</span>)</a>
+</header>
+
+<main class="wrap" id="productRoot"></main>
+
+<section class="related" id="relatedSection" style="display:none">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="kicker mono">Pairs with</p>
+        <h2 class="mt-2">Complete the <em>system.</em></h2>
+      </div>
+    </div>
+    <div class="thirteen" id="relatedGrid" style="grid-template-columns:repeat(3,1fr)"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="wordmark" href="index.html">ALETH<small>CHEMICAL CO.</small></a>
+      <p>Precision chemistry for people who notice the difference.</p>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Collection</p>
+      <a href="products.html">The Thirteen</a>
+      <a href="sds.html">Safety Data Sheets</a>
+      <a href="house.html">The House</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Policies</p>
+      <a href="returns.html">Returns &amp; Refunds</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="accessibility.html">Accessibility</a>
+      <a href="safety.html">Product Safety</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Find us</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/alethchemical/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+      <a class="footer-social-note mono" href="https://www.instagram.com/alethchemical/" target="_blank" rel="noopener">@alethchemical</a>
+      <a class="footer-mail" href="mailto:house@alethchemical.com">house@alethchemical.com</a>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© 2026 Aleth Chemical Co</span>
+    <span>Truth, in formulation.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script src="notify.js"></script>
+<script>
+function vial(p, lg){
+  return '<span class="vial' + (lg ? ' vial-lg' : '') + '" style="--liquid:' + p.liquid + ';--acc:' + p.accent + '">' +
+    '<span class="vial-shadow"></span><span class="vial-spray"></span><span class="vial-cap"></span>' +
+    '<span class="vial-body"><span class="vial-liquid"></span></span>' +
+    '<span class="vial-label"><b>ALETH</b><span>' + p.name + '</span></span>' +
+  '</span>';
+}
+function poleVial(liquid, acc, step){
+  return '<span class="vial vial-lg" style="--liquid:' + liquid + ';--acc:' + acc + '">' +
+    '<span class="vial-shadow"></span><span class="vial-spray"></span><span class="vial-cap"></span>' +
+    '<span class="vial-body"><span class="vial-liquid"></span></span>' +
+    '<span class="vial-label"><b>ALETH</b><span>POLARITY</span><i>' + step + '</i></span>' +
+  '</span>';
+}
+function stageVials(p){
+  if (p.id === 'everything') return '<img class="stage-photo" src="assets/omni-bottle.jpg" alt="OMNI All-Purpose Cleaner bottle">';
+  if (p.id === 'bead') return '<img class="stage-photo" src="assets/bead-bottle.jpg" alt="BEAD SiO2 Ceramic Boost Spray bottle">';
+  if (p.id === 'multi-purpose') return '<img class="stage-photo" src="assets/solv-bottle.jpg" alt="SOLV Multi-Acid Mineral Descaler bottle">';
+  if (p.id !== 'polarity') return vial(p, true);
+  return '<span class="vial-pair">' +
+    poleVial('rgba(168,30,30,0.55)', '#B02E2E', 'Step 1 · Acid') +
+    poleVial('rgba(47,90,194,0.55)', '#2F5AC2', 'Step 2 · Alkaline') +
+  '</span>';
+}
+(function(){
+  var root = document.getElementById('productRoot');
+  var id = new URLSearchParams(location.search).get('id');
+  var p = id && window.productById(id);
+  if (!p){
+    root.innerHTML = '<div class="lost"><p class="mono">Out of catalog</p><h1>Not in the <em>Thirteen.</em></h1><p>Whatever you were looking for, it isn\u2019t part of the Thirteen.</p><a class="btn" href="products.html">Back to the collection</a></div>';
+    document.title = 'Not found · ALETH Chemical Co';
+    return;
+  }
+  document.title = p.name + ' · ALETH Chemical Co';
+  document.documentElement.style.setProperty('--acc', p.accent);
+  var live = window.isLive(p);
+
+  var selSize = 0, qty = 1;
+
+  function dirHTML(d){
+    var rom = ['i','ii','iii','iv','v','vi','vii','viii','ix','x','xi','xii','xiii','xiv','xv'];
+    var steps = d.split('<br>'), n = 0, out = '<div class="dir-list">';
+    steps.forEach(function(s){
+      if (!s.trim()) { out += '<div class="dir-gap"></div>'; return; }
+      out += '<p class="dir-step"><span class="dir-n mono">' + rom[Math.min(n, 14)] + '.</span>' + s + '</p>';
+      n++;
+    });
+    return out + '</div>';
+  }
+  var dirFallback = 'Work on a cool surface, out of direct sun.<br>Apply, allow the chemistry to work.<br>Rinse or wipe per the label. Never let product dry on the surface.<br>Full directions print on the bottle.';
+
+  root.innerHTML =
+  '<div class="product-hero" style="--acc:' + p.accent + ';--acc-soft:' + p.accentSoft + '">' +
+    '<div class="product-stage">' + stageVials(p) + '</div>' +
+    '<div>' +
+      '<p class="kicker mono pd-kicker">' + p.system + '</p>' +
+      '<h1 class="pd-name">' + p.name + '</h1>' +
+      '<p class="pd-kind">' + p.kind + '</p>' +
+      '<p class="pd-line">' + p.line + '</p>' +
+      (p.mantra ? '<p class="pd-mantra mono reveal">' + p.mantra + '</p>' : '') +
+      (p.notes ? '<a class="pd-letter-link mono" href="#letter" id="letterLink">Read the letter <span class="arr">&darr;</span></a>' : '') +
+      '<div class="spec-plate">' +
+        '<div class="spec-cell"><span class="mono">Series</span><b>' + (live ? 'Ships now' : 'In the lab') + '</b></div>' +
+                '<div class="spec-cell"><span class="mono">Fill</span><b>' + p.sizes.map(function(s){ var m = s.label.match(/[\d.]+ ?oz/); return m ? m[0] : s.label; }).filter(function(v, i, a){ return a.indexOf(v) === i; }).join(' · ') + '</b></div>' +
+      '</div>' +
+      '<p class="spec-secret mono">Proprietary blend · full hazard disclosure lives in the library</p>' +
+      (live ?
+      '<div class="size-row" id="sizeRow">' +
+        p.sizes.map(function(s, i){ return '<button class="size-pill' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '">' + s.label + ' · ' + window.fmt(s.price) + '</button>'; }).join('') +
+      '</div>' +
+      (p.skuNote ? '<p class="sku-note mono">' + p.skuNote + '</p>' : '') +
+      '<div class="buy-row">' +
+        '<div class="qty-stepper"><button id="qMinus" aria-label="Less">−</button><span id="qVal">1</span><button id="qPlus" aria-label="More">+</button></div>' +
+        '<button class="btn btn-acc" id="buyBtn">Add to cart&nbsp;&nbsp;·&nbsp;&nbsp;<span id="buyPrice">' + window.fmt(p.sizes[0].price) + '</span></button>' +
+      '</div>' +
+      '<div class="trust-wrap">' +
+      '<p class="trust-row mono"><button class="trust-link" type="button" data-note="ship">Ships within 2 business days</button> <i>·</i> <button class="trust-link" type="button" data-note="ret">Wrong, damaged, defective, or lost — we make it right</button></p>' +
+      '<div class="trust-note" id="trustNote" hidden>' +
+        '<p class="trust-note-k mono" id="tnKicker"></p>' +
+        '<p class="trust-note-b" id="tnBody"></p>' +
+        '<a class="trust-note-more mono" href="shipping.html" id="tnMore"></a>' +
+      '</div>' +
+      '</div>' :
+      '<div class="lab-panel" style="--acc:' + p.accent + '">' +
+        '<p class="lab-tag mono">In the lab</p>' +
+        '<p class="lab-copy">This formula is still on the bench. It ships when it is proven — leave your email and you will know the day it lands.</p>' +
+        '<form class="notify" id="notifyForm" data-product="' + p.id + '" data-product-name="' + p.name + '">' +
+          '<input class="notify-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+          '<input class="notify-in" id="notifyEmail" type="email" required placeholder="you@machine.com" aria-label="Email">' +
+          '<button class="btn btn-acc" type="submit">Notify me</button>' +
+        '</form>' +
+        '<p class="notify-done mono" id="notifyDone" hidden></p>' +
+      '</div>') +
+      '<div class="acc">' +
+        '<details><summary>Directions<span class="acc-x">+</span></summary><div class="acc-body"><div class="acc-inner">' + dirHTML(p.directions || dirFallback) + '</div></div></details>' +
+        '<details><summary>Surface compatibility<span class="acc-x">+</span></summary><div class="acc-body"><div class="acc-inner"><p>' + (p.surfaces || 'Compatibility is stated on the label and the safety data sheet. When in doubt, test a small hidden area first.') + '</p></div></div></details>' +
+        '<details><summary>The file · SDS<span class="acc-x">+</span></summary><div class="acc-body"><div class="acc-inner"><p>' + (p.file || 'Every hazard and handling note for this formula lives in the library, properly filed. The blend itself stays proprietary. <a href="sds.html">Open the safety data sheets &#8599;</a>') + '</p></div></div></details>' +
+        '<details><summary>Shipping &amp; returns<span class="acc-x">+</span></summary><div class="acc-body"><div class="acc-inner"><p>' + (p.shipping || 'Ships by Ground Service within 1\u20132 Business Days — no air, by regulation. All sales are final; wrong, damaged, defective, or lost is ours to make right at our cost. <a href="shipping.html">Shipping Policy</a> · <a href="returns.html">Returns &amp; Refunds</a>') + '</p></div></div></details>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+  (p.notes ? careNotes(p) : '');
+
+function careNotes(p){
+  var n = p.notes;
+  return '<section class="care-notes" id="letter" style="--acc:' + p.accent + '"><div class="wrap cn-wrap">' +
+    '<p class="kicker mono reveal">' + n.kicker + '</p>' +
+    '<h2 class="reveal">' + n.title + '</h2>' +
+    '<div class="cn-body">' +
+      '<p class="cn-lede reveal">' + n.intro + '</p>' +
+      (n.body ? '<p class="reveal">' + n.body + '</p>' : '') +
+      n.sections.map(function(s){
+        return '<div class="cn-sec reveal"><span class="mono cn-h">' + s.h + '</span><p>' + s.b + '</p></div>';
+      }).join('') +
+      '<p class="cn-closer reveal"><em>' + n.closer + '</em></p>' +
+      (n.footnotes ? '<div class="cn-notes reveal">' + n.footnotes.map(function(f){ return '<p>' + f + '</p>'; }).join('') + '</div>' : '') +
+    '</div>' +
+  '</div></section>';
+}
+
+  /* reveal for care notes (injected after global observer ran) */
+  var cnIO = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('is-in'); cnIO.unobserve(en.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.care-notes .reveal, .pd-mantra.reveal').forEach(function(el){ cnIO.observe(el); });
+
+  /* silk accordion: one open at a time, animated unfold */
+  document.querySelectorAll('.acc summary').forEach(function(s){
+    s.addEventListener('click', function(e){
+      e.preventDefault();
+      var d = s.parentElement;
+      if (d.classList.contains('is-open')) {
+        d.classList.remove('is-open');
+        setTimeout(function(){ if (!d.classList.contains('is-open')) d.open = false; }, 580);
+        return;
+      }
+      document.querySelectorAll('.acc details.is-open').forEach(function(o){
+        o.classList.remove('is-open');
+        setTimeout(function(){ if (!o.classList.contains('is-open')) o.open = false; }, 580);
+      });
+      d.open = true;
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ d.classList.add('is-open'); }); });
+    });
+  });
+  if (location.hash === '#qa') { var qd = document.querySelector('.acc details'); if (qd) { qd.open = true; qd.classList.add('is-open'); } }
+  var ll = document.getElementById('letterLink');
+  if (ll) ll.addEventListener('click', function(e){ e.preventDefault(); var t = document.getElementById('letter'); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+
+  if (live){
+    document.getElementById('sizeRow').addEventListener('click', function(e){
+      var b = e.target.closest('.size-pill'); if (!b) return;
+      selSize = +b.dataset.i;
+      this.querySelectorAll('.size-pill').forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      document.getElementById('buyPrice').textContent = window.fmt(p.sizes[selSize].price * qty);
+    });
+    document.getElementById('qMinus').onclick = function(){ qty = Math.max(1, qty-1); sync(); };
+    document.getElementById('qPlus').onclick = function(){ qty = Math.min(99, qty+1); sync(); };
+    function sync(){ document.getElementById('qVal').textContent = qty; document.getElementById('buyPrice').textContent = window.fmt(p.sizes[selSize].price * qty); }
+    document.getElementById('buyBtn').onclick = function(){ window.cartAdd(p.id, p.sizes[selSize].label, qty); };
+
+    /* Trust notes — the fact, proven in place */
+    var TRUST = {
+      ship: { k: 'Shipping', b: 'Orders are handed to the carrier within 1\u20132 Business Days, by Ground Service only — no air option, at any price; for these goods the rule is federal. Free at $79 or more within the contiguous United States.', more: 'Full shipping policy', href: 'shipping.html' },
+      ret: { k: 'If it is ours to fix', b: 'All sales are final — with one exception that is not small. Wrong item, transit damage, a defective product, or a package that never arrives: you choose a full refund or a replacement, and ALETH pays every dollar of shipping in either direction. No forms. No arguments.', more: 'Full returns policy', href: 'returns.html' }
+    };
+    var tNote = document.getElementById('trustNote'), tOpen = null;
+    function showNote(key){
+      var d = TRUST[key]; if (!d) return;
+      if (tOpen === key && !tNote.hidden){ hideNote(); return; }
+      document.getElementById('tnKicker').textContent = d.k;
+      document.getElementById('tnBody').textContent = d.b;
+      var tnM = document.getElementById('tnMore');
+      tnM.textContent = d.more + ' \u2192';
+      tnM.href = d.href;
+      tNote.hidden = false;
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ tNote.classList.add('is-open'); }); });
+      tOpen = key;
+      root.querySelectorAll('.trust-link').forEach(function(x){ x.classList.toggle('is-active', x.dataset.note === key); });
+    }
+    function hideNote(){
+      if (tNote.hidden) return;
+      tNote.classList.remove('is-open');
+      tOpen = null;
+      root.querySelectorAll('.trust-link').forEach(function(x){ x.classList.remove('is-active'); });
+      setTimeout(function(){ if (!tOpen) tNote.hidden = true; }, 320);
+    }
+    root.querySelectorAll('.trust-link').forEach(function(b){
+      b.addEventListener('click', function(e){ e.stopPropagation(); showNote(b.dataset.note); });
+    });
+    document.addEventListener('click', function(e){ if (tOpen && !e.target.closest('.trust-wrap')) hideNote(); });
+    document.addEventListener('keydown', function(e){ if (e.key === 'Escape') hideNote(); });
+  } else {
+    window.alethNotifyWire(document.getElementById('notifyForm'));
+  }
+
+  /* Related: same system first, then neighbors */
+  var rel = window.PRODUCTS.filter(function(x){ return x.system === p.system && x.id !== p.id; });
+  if (rel.length < 3){
+    var extra = window.PRODUCTS.filter(function(x){ return x.id !== p.id && rel.indexOf(x) === -1; });
+    rel = rel.concat(extra).slice(0, 3);
+  } else rel = rel.slice(0, 3);
+  document.getElementById('relatedSection').style.display = '';
+  document.getElementById('relatedGrid').innerHTML = rel.map(function(x){
+    var xLive = window.isLive(x);
+    return '<a class="t-cell' + (xLive ? '' : ' is-lab') + '" href="product.html?id=' + x.id + '" style="--cell-acc:' + x.accentSoft + ';--cell-ink:' + x.accent + '">' +
+      '<span class="t-code">' + x.code + (xLive ? '' : ' · IN THE LAB') + '</span>' +
+      '<span><span class="t-name">' + x.name + '</span><span class="t-kind" style="display:block">' + x.kind + '</span></span>' +
+      '<span class="t-foot"><span class="t-price">' + (xLive ? window.fmt(x.sizes[0].price) : 'In the lab') + '</span><span class="t-arrow">&rarr;</span></span>' +
+    '</a>';
+  }).join('');
+})();
+</script>
+</body>
+</html>

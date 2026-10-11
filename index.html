@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ALETH Chemical Co · Truth, in formulation.</title>
+<meta name="description" content="Thirteen formulas. Every claim provable. Nothing hidden.">
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ALETH Chemical Co">
+<meta property="og:title" content="ALETH Chemical Co · Truth, in formulation.">
+<meta property="og:description" content="Thirteen formulas. Every claim provable. Nothing hidden.">
+<meta property="og:url" content="https://alethchemical.com/">
+<meta property="og:image" content="https://alethchemical.com/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alethchemical.com/assets/og-card.jpg">
+<meta name="twitter:title" content="ALETH Chemical Co · Truth, in formulation.">
+<meta name="twitter:description" content="Thirteen formulas. Every claim provable. Nothing hidden.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=mist15">
+</head>
+<body class="home">
+
+<div class="ticker" aria-hidden="true">
+  <div class="ticker-track" id="tickerTrack"></div>
+</div>
+
+<header class="site-header">
+  <a class="wordmark" href="index.html">ALETH<small>CHEMICAL CO.</small></a>
+  <nav class="site-nav">
+    <a class="nav-link" href="products.html">The Thirteen</a>
+    <a class="nav-link" href="house.html">House</a>
+    <a class="nav-link" href="sds.html">SDS</a>
+  </nav>
+  <a class="cart-link" href="#">Cart (<span id="cartBadge">0</span>)</a>
+</header>
+
+<!-- HERO -->
+<section class="hero has-photo">
+  <picture class="hero-bg" aria-hidden="true">
+    <source media="(max-width: 767px)" srcset="assets/hero-arrival-mobile.jpg">
+    <img src="assets/hero-arrival-desktop.jpg" alt="" loading="eager" fetchpriority="high">
+  </picture>
+  <span class="hero-watermark" aria-hidden="true">ALETH</span>
+  <div class="wrap hero-inner">
+    <p class="hero-kicker mono reveal hero-rise" style="animation-delay:.1s">Chemical Co · Thirteen Formulas</p>
+    <h1 class="reveal hero-rise" style="animation-delay:.28s">Truth, <em>in formulation.</em></h1>
+    <p class="hero-sub reveal hero-rise" style="animation-delay:.46s"><span class="sub-desk">Acid where it belongs. Neutral where it matters. Alkaline where the grime lives. Thirteen formulas, each one exactly what it says it is.</span><span class="sub-mob">Acid where it belongs. Neutral where it matters.<br>Alkaline where the grime lives.<br>Thirteen formulas. Exactly what they say they are.</span></p>
+    <div class="reveal hero-rise hero-cta" style="animation-delay:.64s">
+      <a class="btn btn-square" href="products.html">Enter the Thirteen</a>
+      <a class="btn btn-ghost" href="house.html">The House Standard</a>
+    </div>
+  </div>
+  <div class="wrap">
+    <div class="hero-stage" id="heroStage" aria-hidden="true"></div>
+  </div>
+  <div class="wrap hero-shot-wrap" id="heroShotWrap" hidden>
+    <img class="hero-shot" id="heroShot" alt="ALETH Chemical Co — the house of clean">
+  </div>
+</section>
+
+<!-- EDITORIAL BAND (renders drop in here) -->
+<section class="section editorial-band" id="editorialBand" hidden>
+  <div class="wrap">
+    <div class="ed-grid">
+      <img class="ed-img"  alt="ALETH editorial">
+      <img class="ed-img"  alt="ALETH editorial">
+      <img class="ed-img"  alt="ALETH editorial">
+    </div>
+  </div>
+</section>
+
+<!-- CONFLUENCE — the method film -->
+<div class="film-slot">
+  <video class="film-vid" autoplay muted loop playsinline preload="metadata" aria-label="Confluence — two transparent streams become one">
+    <source src="assets/confluence-film.mp4" type="video/mp4">
+  </video>
+</div>
+
+<!-- THE THIRTEEN -->
+<section class="section">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="kicker mono reveal">The full lineup</p>
+        <h2 class="reveal mt-2">The <em>Thirteen.</em></h2>
+      </div>
+      <a class="btn btn-ghost reveal" href="products.html">Open the collection</a>
+    </div>
+    <div class="thirteen" id="thirteenGrid"></div>
+  </div>
+</section>
+
+
+<!-- FIND YOUR FORMULA : the whisper -->
+<div class="fyf-call reveal">
+  <button class="fyf-call-btn" id="fyfOpen" aria-haspopup="dialog">
+    <span class="fyf-call-k mono">The guide</span>
+    <span class="fyf-call-line">Thirteen bottles. One of them is <em>yours.</em></span>
+    <span class="fyf-call-cta mono">Find your formula <i>&rarr;</i></span>
+  </button>
+</div>
+
+<!-- FORMULA GUIDE OVERLAY -->
+<div class="fyf-modal" id="fyfModal" role="dialog" aria-modal="true" aria-label="Find your formula" hidden>
+  <div class="fyf-veil" id="fyfVeil"></div>
+  <div class="fyf-card" id="fyfCard" tabindex="-1">
+    <div class="fyf-prog" id="fyfProg"><span></span></div>
+    <button class="fyf-x" id="fyfClose" aria-label="Close">&times;</button>
+    <div class="fyf-box" id="fyfBox"></div>
+  </div>
+</div>
+
+<!-- MANIFESTO -->
+<section class="section manifesto">
+  <div class="wrap">
+    <p class="mono reveal">The standard</p>
+    <p class="reveal">Adjectives can't be verified.<br>We show our work and <em>let the chemistry speak.</em></p>
+    <div class="manifesto-foot reveal">
+      <a class="btn btn-ghost" href="house.html">Read the house letter</a>
+    </div>
+  </div>
+</section>
+
+<!-- WAVE STRIP -->
+<div class="wrap">
+  <div class="wave-strip">
+    <div class="wave-cell reveal">
+      <span class="mono">01 · The thirteen</span>
+      <h3>Thirteen, and only thirteen.</h3>
+      <p>No duplicates in different costumes. Each formula owns its job outright. A fourteenth exists, and stays locked until these prove themselves.</p>
+    </div>
+    <div class="wave-cell reveal">
+      <span class="mono">02 · The two sizes</span>
+      <h3>16.9 oz everywhere. 32 where the job asks.</h3>
+      <p>The 500 ml global premium standard across the line, with a pro 32 oz on the formulas that earn it. Nothing between, because nothing between is needed.</p>
+    </div>
+    <div class="wave-cell reveal">
+      <span class="mono">03 · The paper trail</span>
+      <h3>Every hazard, in writing.</h3>
+      <p>A safety data sheet for every bottle, published as each formula ships. Truth is not a marketing line here. It is a filing system.</p>
+    </div>
+  </div>
+</div>
+
+<footer class="site-footer section" style="padding-bottom:2rem">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="wordmark" href="index.html">ALETH<small>CHEMICAL CO.</small></a>
+      <p>Precision chemistry for people who notice the difference.</p>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Collection</p>
+      <a href="products.html">The Thirteen</a>
+      <a href="sds.html">Safety Data Sheets</a>
+      <a href="house.html">The House</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Policies</p>
+      <a href="returns.html">Returns &amp; Refunds</a>
+      <a href="shipping.html">Shipping</a>
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="accessibility.html">Accessibility</a>
+      <a href="safety.html">Product Safety</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Find us</p>
+      <div class="footer-social">
+        <a href="https://www.instagram.com/alethchemical/" aria-label="Instagram" title="Instagram" target="_blank" rel="noopener"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg></a>
+      </div>
+      <a class="footer-social-note mono" href="https://www.instagram.com/alethchemical/" target="_blank" rel="noopener">@alethchemical</a>
+      <a class="footer-mail" href="mailto:house@alethchemical.com">house@alethchemical.com</a>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© 2026 Aleth Chemical Co</span>
+    <span>Truth, in formulation.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="cart.js"></script>
+<script>
+/* Media slots: reveal only when the render actually exists */
+(function(){
+  function arm(img, reveal){
+    if (!img) return;
+    img.addEventListener('load', function(){ if (img.naturalWidth > 0) reveal(); });
+    if (img.complete && img.naturalWidth > 0) reveal();
+  }
+  var hs = document.getElementById('heroShot');
+  arm(hs, function(){ document.getElementById('heroShotWrap').hidden = false; });
+  var band = document.getElementById('editorialBand');
+  var imgs = band.querySelectorAll('.ed-img');
+  var ok = 0;
+  imgs.forEach(function(im){
+    im.addEventListener('error', function(){ im.style.display = 'none'; });
+    arm(im, function(){ ok++; band.hidden = false; });
+  });
+})();
+
+/* Ticker */
+(function(){
+  var items = ['<b>ALETH CHEMICAL CO</b>', 'THIRTEEN FORMULAS', 'TRUTH, IN FORMULATION', '16.9 OZ · THE PREMIUM STANDARD', 'SIX FORMULAS · NOW POURING', 'THE FOURTEENTH · SEALED'];
+  var half = items.map(function(i){ return '<span>' + i + '</span>'; }).join('<span>·</span>');
+  document.getElementById('tickerTrack').innerHTML = half + '<span>·</span>' + half;
+})();
+
+/* Vial builder */
+function vial(p, lg){
+  return '<span class="vial' + (lg ? ' vial-lg' : '') + '" style="--liquid:' + p.liquid + ';--acc:' + p.accent + '">' +
+    '<span class="vial-shadow"></span>' +
+    '<span class="vial-spray"></span><span class="vial-cap"></span>' +
+    '<span class="vial-body"><span class="vial-liquid"></span></span>' +
+    '<span class="vial-label"><b>ALETH</b><span>' + p.name + '</span></span>' +
+  '</span>';
+}
+
+/* Hero stage: all thirteen, parallax drift */
+(function(){
+  var stage = document.getElementById('heroStage');
+  stage.innerHTML = window.PRODUCTS.map(function(p, i){
+    return '<span class="hero-bottle-slot" data-depth="' + (0.3 + (i % 5) * 0.22).toFixed(2) + '">' + vial(p) + '</span>';
+  }).join('');
+  var slots = stage.querySelectorAll('.hero-bottle-slot');
+  document.addEventListener('mousemove', function(e){
+    var cx = (e.clientX / window.innerWidth - 0.5);
+    slots.forEach(function(s){
+      var d = +s.dataset.depth;
+      s.style.transform = 'translateX(' + (cx * 34 * d) + 'px)';
+    });
+  });
+})();
+
+/* The Thirteen grid */
+(function(){
+  var grid = document.getElementById('thirteenGrid');
+  grid.innerHTML = window.PRODUCTS.map(function(p){
+    var duo = p.id === 'polarity' ? ' is-duo' : '';
+    var accBg = p.accent2
+      ? 'linear-gradient(120deg, ' + p.accent + '14, ' + p.accent2 + '14)'
+      : p.accentSoft;
+    var live = window.isLive(p);
+    return '<a class="t-cell' + duo + (live ? '' : ' is-lab') + '" href="product.html?id=' + p.id + '" style="--cell-acc:' + accBg + ';--cell-ink:' + p.accent + '">' +
+      '<span class="t-code">' + (live ? 'SHIPS NOW' : 'IN THE LAB') + '</span>' +
+      '<span><span class="t-name">' + p.name + '</span><span class="t-kind" style="display:block">' + p.kind + '</span></span>' +
+      '<span class="t-foot"><span class="t-price">' + (live ? window.fmt(p.sizes[0].price) + (p.sizes.length > 1 ? ' +' : '') : 'In the lab') + '</span><span class="t-arrow">&rarr;</span></span>' +
+    '</a>';
+  }).join('') +
+  '<span class="t-cell is-duo t-sealed" aria-hidden="true">' +
+    '<span class="t-code">14 · SEALED</span>' +
+    '<span><span class="t-name">The Fourteenth</span><span class="t-kind" style="display:block">Locked until the Thirteen prove themselves.</span></span>' +
+    '<span class="t-foot"><span class="t-price">&middot;</span><span class="t-arrow">&#9646;</span></span>' +
+  '</span>';
+  var io = new IntersectionObserver(function(es){
+    es.forEach(function(en, i){ if (en.isIntersecting){ setTimeout(function(){ en.target.classList.add('is-in'); }, (i % 4) * 70); en.target.classList.add('reveal'); io.unobserve(en.target); } });
+  }, { threshold: 0.05 });
+  grid.querySelectorAll('.t-cell').forEach(function(c){ c.classList.add('reveal'); io.observe(c); });
+})();
+
+
+/* Find your formula */
+(function(){
+  var box = document.getElementById('fyfBox');
+  var ROM = ['I', 'II', 'III'];
+  var QS = [
+    { q: 'What are we cleaning?', opts: ['Wheels & tires', 'Paint & body', 'Glass', 'The cabin', 'The whole machine'] },
+    { q: 'How do you like to work?', opts: ['Foam cannon', 'Bucket & mitt', 'Spray & wipe', 'Whatever works'] },
+    { q: 'What matters most right now?', opts: ['A deep reset', 'Protection that lasts', 'Speed', 'The gentlest touch'] }
+  ];
+  function resultFor(a){
+    var zone = a[0], style = a[1], want = a[2];
+    if (zone === 0) return 'wheel';
+    if (zone === 2) return want === 1 ? 'glass-ceramic' : 'glass';
+    if (zone === 3) return (want === 1 || want === 3) ? 'leather' : 'interior';
+    if (zone === 4){
+      if (want === 0) return 'multi-purpose';
+      if (want === 1) return 'bead';
+      if (style === 0) return 'touchless';
+      return 'everything';
+    }
+    /* paint & body */
+    if (want === 1) return 'bead';
+    if (want === 0) return style === 0 ? 'polarity' : 'strip';
+    if (want === 3) return 'wash';
+    if (style === 0) return 'touchless';
+    if (style === 2) return 'bead';
+    return 'wash';
+  }
+  var ans = [];
+  var modal = document.getElementById('fyfModal');
+  var card = document.getElementById('fyfCard');
+  var prog = document.querySelector('#fyfProg span');
+  function setProg(f){ prog.style.transform = 'scaleX(' + f + ')'; }
+  function renderStep(){
+    var i = ans.length;
+    setProg((i + 0.35) / 3);
+    card.classList.remove('is-result');
+    var opts = QS[i].opts.map(function(o, j){
+      return '<button class="fyf-opt" data-j="' + j + '"><span class="fyf-opt-n mono">' + String.fromCharCode(65 + j) + '</span><span>' + o + '</span><span class="fyf-opt-arr">&rarr;</span></button>';
+    }).join('');
+    swap('<div class="fyf-step">' +
+      '<p class="fyf-count mono">Question ' + ROM[i] + ' of III</p>' +
+      '<p class="fyf-q">' + QS[i].q + '</p>' +
+      '<div class="fyf-opts">' + opts + '</div>' +
+      (i > 0 ? '<button class="fyf-back mono" id="fyfBack">&larr; Back one</button>' : '') +
+    '</div>', function(){
+      box.querySelectorAll('.fyf-opt').forEach(function(b){
+        b.addEventListener('click', function(){
+          ans.push(+b.dataset.j);
+          if (ans.length < 3) renderStep(); else renderResult();
+        });
+      });
+      var back = document.getElementById('fyfBack');
+      if (back) back.addEventListener('click', function(){ ans.pop(); renderStep(); });
+    });
+  }
+  function renderResult(){
+    var p = window.PRODUCTS.find(function(x){ return x.id === resultFor(ans); });
+    setProg(1);
+    card.classList.add('is-result');
+    card.style.setProperty('--acc', p.accent);
+    swap('<div class="fyf-result">' +
+      '<div class="fyf-result-stage">' + vial(p, true) + '</div>' +
+      '<div class="fyf-result-copy">' +
+        '<p class="fyf-count mono">Your formula</p>' +
+        '<p class="fyf-r-name">' + p.name + '</p>' +
+        '<p class="fyf-r-kind"><em>' + p.kind + '</em></p>' +
+        '<p class="fyf-r-line">' + p.line + '</p>' +
+        (window.isLive(p) ? '' : '<p class="fyf-r-lab mono">In the lab — leave your email on its page</p>') +
+        '<div class="fyf-r-cta"><a class="btn btn-acc" href="product.html?id=' + p.id + '">Open ' + p.name + '</a>' +
+        '<button class="fyf-back mono" id="fyfAgain">Run it again</button></div>' +
+      '</div>' +
+    '</div>', function(){
+      document.getElementById('fyfAgain').addEventListener('click', function(){ ans = []; renderStep(); });
+    });
+  }
+  function swap(html, bind){
+    box.classList.add('is-out');
+    setTimeout(function(){
+      box.innerHTML = html;
+      box.classList.remove('is-out');
+      box.classList.add('is-in');
+      setTimeout(function(){ box.classList.remove('is-in'); }, 420);
+      if (bind) bind();
+    }, 180);
+  }
+  function openModal(){
+    ans = [];
+    modal.hidden = false;
+    document.body.classList.add('fyf-lock');
+    renderStep();
+    requestAnimationFrame(function(){ requestAnimationFrame(function(){ modal.classList.add('is-open'); }); });
+    card.focus({ preventScroll: true });
+  }
+  function closeModal(){
+    modal.classList.remove('is-open');
+    document.body.classList.remove('fyf-lock');
+    setTimeout(function(){ modal.hidden = true; }, 380);
+    document.getElementById('fyfOpen').focus();
+  }
+  document.getElementById('fyfOpen').addEventListener('click', openModal);
+  document.getElementById('fyfClose').addEventListener('click', closeModal);
+  document.getElementById('fyfVeil').addEventListener('click', closeModal);
+  document.addEventListener('keydown', function(e){
+    if (e.key === 'Escape' && !modal.hidden) closeModal();
+  });
+  if (location.hash === '#find-your-formula') {
+    setTimeout(openModal, 350);
+  }
+})();
+</script>
+</body>
+</html>
