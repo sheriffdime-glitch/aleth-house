@@ -1,0 +1,421 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="robots" content="noindex, nofollow">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<meta name="theme-color" content="#FBFAF7">
+<link rel="apple-touch-icon" href="assets/apple-touch-icon.png">
+<title>Product · ALETH Chemical Co</title>
+<meta property="og:type" content="website">
+<meta property="og:site_name" content="ALETH Chemical Co">
+<meta property="og:title" content="Product · ALETH Chemical Co">
+<meta property="og:description" content="Precision chemistry for people who notice the difference. Thirteen formulas. Nothing hidden.">
+<meta property="og:url" content="https://alethchemical.com/product.html">
+<meta property="og:image" content="https://alethchemical.com/assets/og-card.jpg">
+<meta property="og:image:width" content="1200">
+<meta property="og:image:height" content="630">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:image" content="https://alethchemical.com/assets/og-card.jpg">
+<meta name="twitter:title" content="Product · ALETH Chemical Co">
+<meta name="twitter:description" content="Precision chemistry for people who notice the difference. Thirteen formulas. Nothing hidden.">
+<link rel="icon" href="favicon.svg" type="image/svg+xml">
+<link rel="stylesheet" href="styles.css?v=mist43">
+</head>
+<body>
+
+<header class="site-header">
+  <a class="wordmark" href="index.html">ALETH<small>CHEMICAL CO.</small></a>
+  <nav class="site-nav">
+    <a class="nav-link is-here" href="products.html">The Thirteen</a>
+    <a class="nav-link" href="house.html">House</a>
+    <a class="nav-link" href="sds.html">SDS</a>
+  </nav>
+  <a class="cart-link" href="#">Cart (<span id="cartBadge">0</span>)</a>
+</header>
+
+<main class="wrap" id="productRoot"></main>
+
+<!-- Owner reviews: House pre-moderation. Frontend preview pending service connection. -->
+<section class="owner-reviews" id="ownerReviews" aria-labelledby="ownerReviewsTitle" hidden>
+  <div class="wrap">
+    <div class="owner-reviews-head">
+      <div>
+        <p class="kicker mono">Owner reviews</p>
+        <h2 id="ownerReviewsTitle">The result, <em>in their words.</em></h2>
+      </div>
+      <button class="owner-review-open" id="ownerReviewOpen" type="button" aria-expanded="false" aria-controls="ownerReviewForm"><span>Write a review</span><span aria-hidden="true">&rarr;</span></button>
+    </div>
+    <p class="owner-review-moderation">Every review is read by the House before it appears. We check authenticity, privacy, and abuse. Honest criticism is always welcome.</p>
+    <div class="owner-review-ledger">
+      <p class="owner-review-ledger-kicker mono">The owner ledger</p>
+      <p>Early owner reviews are being gathered. Approved reviews will appear here.</p>
+    </div>
+    <form class="owner-review-form" id="ownerReviewForm" hidden>
+      <div class="owner-review-form-intro">
+        <p class="kicker mono">Your experience</p>
+        <h3>Leave the next owner something useful.</h3>
+        <p>Your review enters private House moderation before publication. Your email address is never shown.</p>
+      </div>
+      <div class="owner-review-fields">
+        <fieldset class="owner-review-field owner-review-field-full owner-review-rating">
+          <legend class="mono">Overall rating</legend>
+          <div class="owner-star-input">
+            <input class="owner-star-radio" id="ownerRating5" type="radio" name="ownerRating" value="5" required><label for="ownerRating5" aria-label="5 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.6 2.85 5.77 6.37.93-4.61 4.49 1.09 6.34L12 17.14l-5.7 2.99 1.09-6.34L2.78 9.3l6.37-.93L12 2.6Z"/></svg></label>
+            <input class="owner-star-radio" id="ownerRating4" type="radio" name="ownerRating" value="4" required><label for="ownerRating4" aria-label="4 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.6 2.85 5.77 6.37.93-4.61 4.49 1.09 6.34L12 17.14l-5.7 2.99 1.09-6.34L2.78 9.3l6.37-.93L12 2.6Z"/></svg></label>
+            <input class="owner-star-radio" id="ownerRating3" type="radio" name="ownerRating" value="3" required><label for="ownerRating3" aria-label="3 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.6 2.85 5.77 6.37.93-4.61 4.49 1.09 6.34L12 17.14l-5.7 2.99 1.09-6.34L2.78 9.3l6.37-.93L12 2.6Z"/></svg></label>
+            <input class="owner-star-radio" id="ownerRating2" type="radio" name="ownerRating" value="2" required><label for="ownerRating2" aria-label="2 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.6 2.85 5.77 6.37.93-4.61 4.49 1.09 6.34L12 17.14l-5.7 2.99 1.09-6.34L2.78 9.3l6.37-.93L12 2.6Z"/></svg></label>
+            <input class="owner-star-radio" id="ownerRating1" type="radio" name="ownerRating" value="1" required><label for="ownerRating1" aria-label="1 out of 5 stars"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m12 2.6 2.85 5.77 6.37.93-4.61 4.49 1.09 6.34L12 17.14l-5.7 2.99 1.09-6.34L2.78 9.3l6.37-.93L12 2.6Z"/></svg></label>
+          </div>
+          <p class="owner-star-caption" id="ownerStarCaption" aria-live="polite">Choose a rating</p>
+        </fieldset>
+        <div class="owner-review-field owner-review-field-full">
+          <label class="mono" for="ownerReviewBody">Your review</label>
+          <textarea id="ownerReviewBody" rows="5" minlength="20" maxlength="1200" required placeholder="Tell us what you used, how you used it, and what you noticed."></textarea>
+        </div>
+        <div class="owner-review-field owner-review-field-full">
+          <label class="mono" for="ownerReviewPhotos">Photos <span>Optional · up to 3</span></label>
+          <input id="ownerReviewPhotos" type="file" accept="image/jpeg,image/png,image/webp,image/heic,image/heif" multiple aria-describedby="ownerReviewPhotoNote">
+          <p class="owner-review-photo-note" id="ownerReviewPhotoNote">Show the result or the surface. Please leave out faces, license plates, and private details.</p>
+          <p class="owner-review-photo-status" id="ownerReviewPhotoStatus" aria-live="polite"></p>
+        </div>
+        <div class="owner-review-field">
+          <label class="mono" for="ownerReviewName">Display name</label>
+          <input id="ownerReviewName" type="text" maxlength="60" required autocomplete="name" placeholder="Name shown with the review">
+        </div>
+        <div class="owner-review-field">
+          <label class="mono" for="ownerReviewEmail">Email address</label>
+          <input id="ownerReviewEmail" type="email" required autocomplete="email" placeholder="Never published">
+        </div>
+        <div class="owner-review-submit owner-review-field-full">
+          <button class="btn btn-black-seal" type="submit"><span class="btn-action">Submit for House review</span><span class="checkout-arrow" aria-hidden="true">&rarr;</span></button>
+          <p class="mono">House approval before publication. By submitting, you confirm that this review reflects your own experience.</p>
+        </div>
+      </div>
+      <p class="owner-review-preview-note mono">Preview form. No review or photo is transmitted yet.</p>
+      <p class="owner-review-status" id="ownerReviewStatus" role="status" hidden>Preview complete. No review or photo was transmitted. In the connected experience, this would now enter private House moderation.</p>
+    </form>
+  </div>
+</section>
+
+<section class="related" id="relatedSection" style="display:none">
+  <div class="wrap">
+    <div class="section-head">
+      <div>
+        <p class="kicker mono">Pairs with</p>
+        <h2 class="mt-2">Complete the <em>system.</em></h2>
+      </div>
+    </div>
+    <div class="thirteen" id="relatedGrid" style="grid-template-columns:repeat(3,1fr)"></div>
+  </div>
+</section>
+
+<footer class="site-footer">
+  <div class="wrap footer-grid">
+    <div class="footer-brand">
+      <a class="wordmark" href="index.html">ALETH<small>CHEMICAL CO.</small></a>
+      <p>Precision chemistry for people who notice the difference.</p>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Shop</p>
+      <a href="products.html">The Thirteen</a>
+      <a href="sds.html">Safety Data Sheets</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">House</p>
+      <a href="house.html">The House</a>
+      <a href="index.html#dispatch">The Dispatch</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Support</p>
+      <a href="shipping.html">Shipping</a>
+      <a href="returns.html">Returns &amp; Refunds</a>
+      <a href="safety.html">Product Safety</a>
+    </div>
+    <div class="footer-col">
+      <p class="mono footer-head">Legal</p>
+      <a href="terms.html">Terms of Use</a>
+      <a href="privacy.html">Privacy</a>
+      <a href="accessibility.html">Accessibility</a>
+    </div>
+    <div class="footer-col footer-contact">
+      <p class="mono footer-head">Find us</p>
+      <div class="footer-contact-list">
+        <a class="footer-contact-row" href="https://www.instagram.com/alethchemical/" aria-label="Instagram, @alethchemical" target="_blank" rel="noopener">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4.2"/><circle cx="17.4" cy="6.6" r="0.9" fill="currentColor" stroke="none"/></svg></span>
+          <span class="footer-contact-copy"><span class="footer-contact-label">Instagram</span><span class="footer-contact-value">@alethchemical</span></span>
+          <span class="footer-contact-arrow" aria-hidden="true">&#8599;</span>
+        </a>
+        <a class="footer-contact-row" href="mailto:house@alethchemical.com" aria-label="Email house@alethchemical.com">
+          <span class="footer-contact-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="1"/><path d="m4 7 8 6 8-6"/></svg></span>
+          <span class="footer-contact-copy"><span class="footer-contact-label">Email</span><span class="footer-contact-value">house@alethchemical.com</span></span>
+          <span class="footer-contact-arrow" aria-hidden="true">&#8599;</span>
+        </a>
+      </div>
+    </div>
+  </div>
+  <div class="wrap footer-base">
+    <span>© 2026 Aleth Chemical Co</span>
+    <span>Truth, in formulation.</span>
+  </div>
+</footer>
+
+<script src="data.js"></script>
+<script src="cart.js?v=mist42"></script>
+<script src="notify.js"></script>
+<script>
+window.alethAccentTone = function(hex){
+  var ink = [16, 16, 16], white = [255, 255, 255], porcelain = [251, 250, 247];
+  function channels(value){
+    var clean = String(value || '').replace('#', '').trim();
+    if (clean.length === 3) clean = clean.split('').map(function(x){ return x + x; }).join('');
+    if (!/^[0-9a-f]{6}$/i.test(clean)) return [168, 30, 30];
+    return [0, 2, 4].map(function(i){ return parseInt(clean.slice(i, i + 2), 16); });
+  }
+  function luminance(rgb){
+    var linear = rgb.map(function(v){
+      var s = v / 255;
+      return s <= 0.04045 ? s / 12.92 : Math.pow((s + 0.055) / 1.055, 2.4);
+    });
+    return linear[0] * 0.2126 + linear[1] * 0.7152 + linear[2] * 0.0722;
+  }
+  function contrast(a, b){
+    var la = luminance(a), lb = luminance(b);
+    return (Math.max(la, lb) + 0.05) / (Math.min(la, lb) + 0.05);
+  }
+  function css(rgb){ return '#' + rgb.map(function(v){ return Math.round(v).toString(16).padStart(2, '0'); }).join('').toUpperCase(); }
+  function towardInk(rgb, amount){ return rgb.map(function(v, i){ return v + (ink[i] - v) * amount; }); }
+  function meet(rgb, background, minimum){
+    var tuned = rgb;
+    for (var i = 0; i <= 100; i++){
+      tuned = towardInk(rgb, i / 100);
+      if (contrast(tuned, background) >= minimum) break;
+    }
+    return css(tuned);
+  }
+  var accent = channels(hex);
+  return {
+    on: contrast(accent, white) >= contrast(accent, ink) ? '#FFFFFF' : '#101010',
+    edge: meet(accent, porcelain, 3),
+    text: meet(accent, porcelain, 4.5)
+  };
+};
+(function(){
+  var root = document.getElementById('productRoot');
+  var id = new URLSearchParams(location.search).get('id');
+  var p = id && window.productById(id);
+  if (!p){
+    root.innerHTML = '<div class="lost"><p class="mono">Out of catalog</p><h1>Not in the <em>Thirteen.</em></h1><p>Whatever you were looking for, it isn\u2019t part of the Thirteen.</p><a class="btn" href="products.html">Back to the collection</a></div>';
+    document.title = 'Not found · ALETH Chemical Co';
+    return;
+  }
+  document.title = p.name + ' · ALETH Chemical Co';
+  document.documentElement.style.setProperty('--acc', p.accent);
+  var accentTone = window.alethAccentTone(p.accent);
+  document.documentElement.style.setProperty('--acc-on', accentTone.on);
+  document.documentElement.style.setProperty('--acc-edge', accentTone.edge);
+  document.documentElement.style.setProperty('--acc-text', accentTone.text);
+  var live = window.isLive(p);
+  var reviewsSection = document.getElementById('ownerReviews');
+  if (live && reviewsSection){
+    reviewsSection.hidden = false;
+    var reviewOpen = document.getElementById('ownerReviewOpen');
+    var reviewForm = document.getElementById('ownerReviewForm');
+    var starCaption = document.getElementById('ownerStarCaption');
+    reviewForm.querySelectorAll('input[name="ownerRating"]').forEach(function(input){
+      input.addEventListener('change', function(){
+        starCaption.textContent = input.value + ' out of 5 stars';
+      });
+    });
+    var photoInput = document.getElementById('ownerReviewPhotos');
+    var photoStatus = document.getElementById('ownerReviewPhotoStatus');
+    photoInput.addEventListener('change', function(){
+      if (photoInput.files.length > 3){
+        photoInput.value = '';
+        photoInput.setCustomValidity('');
+        photoStatus.textContent = 'Choose up to three photos.';
+        return;
+      }
+      photoInput.setCustomValidity('');
+      var count = photoInput.files.length;
+      photoStatus.textContent = count ? count + (count === 1 ? ' photo' : ' photos') + ' selected for the preview. No upload has occurred.' : '';
+    });
+    reviewOpen.addEventListener('click', function(){
+      var opening = reviewForm.hidden;
+      reviewForm.hidden = !opening;
+      reviewOpen.setAttribute('aria-expanded', String(opening));
+      reviewOpen.querySelector('span').textContent = opening ? 'Close review form' : 'Write a review';
+      if (opening) reviewForm.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+    reviewForm.addEventListener('submit', function(e){
+      e.preventDefault();
+      if (photoInput.files.length <= 3) photoInput.setCustomValidity('');
+      if (!reviewForm.reportValidity()) return;
+      document.getElementById('ownerReviewStatus').hidden = false;
+    });
+  }
+
+  var selSize = 0, qty = 1;
+
+  function dirHTML(d){
+    var rom = ['i','ii','iii','iv','v','vi','vii','viii','ix','x','xi','xii','xiii','xiv','xv'];
+    var steps = d.split('<br>'), n = 0, out = '<div class="dir-list">';
+    steps.forEach(function(s){
+      if (!s.trim()) { out += '<div class="dir-gap"></div>'; return; }
+      out += '<p class="dir-step"><span class="dir-n mono">' + rom[Math.min(n, 14)] + '.</span>' + s + '</p>';
+      n++;
+    });
+    return out + '</div>';
+  }
+  var dirFallback = 'Work on a cool surface, out of direct sun.<br>Apply, allow the chemistry to work.<br>Rinse or wipe per the label. Never let product dry on the surface.<br>Full directions print on the bottle.';
+  var SERVICE_LEDGER = '<div class="service-ledger" aria-label="Shipping and customer care">' +
+    '<a class="service-item" href="shipping.html"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M3 6h11v10H3zM14 10h4l3 3v3h-7z"/><circle cx="7" cy="18" r="1.5"/><circle cx="18" cy="18" r="1.5"/></svg></span><span>Free shipping at $79 in the contiguous US</span></a>' +
+    '<a class="service-item service-dispatch" href="shipping.html"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M4 7.5 12 3l8 4.5v9L12 21l-8-4.5zM4 7.5l8 4.5 8-4.5M12 12v9"/></svg></span><span>Dispatched within 1\u20132 business days</span></a>' +
+    '<a class="service-item" href="returns.html"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3 5 6v5c0 4.6 2.8 8 7 10 4.2-2 7-5.4 7-10V6z"/><path d="m9 12 2 2 4-4"/></svg></span><span>Wrong or damaged? We make it right</span></a>' +
+    '<a class="service-item service-guidance" href="mailto:care@alethchemical.com"><span class="service-icon" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.35" stroke-linecap="round" stroke-linejoin="round"><path d="M4 5h16v11H9l-5 4z"/><path d="M8 9h8M8 12h5"/></svg></span><span><span class="service-guidance-full">What to use, how much, how long? care@alethchemical.com</span><span class="service-guidance-compact">Product guidance: care@alethchemical.com</span></span></a>' +
+  '</div>';
+
+  root.innerHTML =
+  '<div class="product-hero" style="--acc:' + p.accent + ';--acc-soft:' + p.accentSoft + '">' +
+    '<div class="product-stage media-placeholder" role="img" aria-label="' + p.name + ' product image in preparation"><span class="media-placeholder-copy mono"><span>Product image</span><small>In preparation</small></span></div>' +
+    '<div>' +
+      '<p class="kicker mono pd-kicker">' + p.system + '</p>' +
+      '<h1 class="pd-name">' + p.name + '</h1>' +
+      '<p class="pd-kind">' + p.kind + '</p>' +
+      '<p class="pd-line">' + p.line + '</p>' +
+      (p.mantra ? '<p class="pd-mantra mono reveal">' + p.mantra + '</p>' : '') +
+      (p.notes ? '<a class="pd-letter-link mono" href="#letter" id="letterLink">Read the letter <span class="arr">&darr;</span></a>' : '') +
+
+      '<p class="spec-secret mono">Proprietary blend · full hazard disclosure lives in the library</p>' +
+      (p.skuNote ? '<p class="sku-note mono">' + p.skuNote + '</p>' : '') +
+      (live ?
+      '<div class="size-row" id="sizeRow">' +
+        p.sizes.map(function(s, i){ return '<button class="size-pill' + (i === 0 ? ' is-active' : '') + '" data-i="' + i + '">' + s.label + ' · ' + window.fmt(s.price) + '</button>'; }).join('') +
+      '</div>' +
+      '<div class="buy-row">' +
+        '<div class="qty-stepper"><button id="qMinus" aria-label="Less">−</button><span id="qVal">1</span><button id="qPlus" aria-label="More">+</button></div>' +
+        '<button class="btn btn-acc btn-instrument" id="buyBtn"><span class="btn-action">Add to cart</span><span class="btn-price" id="buyPrice">' + window.fmt(p.sizes[0].price) + '</span></button>' +
+      '</div>' +
+      SERVICE_LEDGER :
+      '<div class="lab-panel" style="--acc:' + p.accent + '">' +
+        '<p class="lab-tag mono">In the lab</p>' +
+        '<p class="lab-copy">This formula is still on the bench. It ships when it is proven — leave your email and you will know the day it lands.</p>' +
+        '<form class="notify" id="notifyForm" data-product="' + p.id + '" data-product-name="' + p.name + '">' +
+          '<input class="notify-hp" type="text" tabindex="-1" autocomplete="off" aria-hidden="true">' +
+          '<input class="notify-in" id="notifyEmail" type="email" required placeholder="you@machine.com" aria-label="Email">' +
+          '<button class="btn btn-acc" type="submit">Notify me</button>' +
+        '</form>' +
+        '<p class="notify-done mono" id="notifyDone" hidden></p>' +
+      '</div>') +
+      '<div class="acc">' +
+        '<details><summary>Directions<span class="acc-x">+</span></summary><div class="acc-body"><div class="acc-inner">' + dirHTML(p.directions || dirFallback) + '</div></div></details>' +
+        '<details><summary>Surface compatibility<span class="acc-x">+</span></summary><div class="acc-body"><div class="acc-inner"><p>' + (p.surfaces || 'Compatibility is stated on the label and the safety data sheet. When in doubt, test a small hidden area first.') + '</p></div></div></details>' +
+        '<details><summary>The file · SDS<span class="acc-x">+</span></summary><div class="acc-body"><div class="acc-inner"><p>' + (p.file || 'Every hazard and handling note for this formula lives in the library, properly filed. The blend itself stays proprietary. <a href="sds.html">Open the safety data sheets &#8599;</a>') + '</p></div></div></details>' +
+        '<details><summary>Shipping &amp; returns<span class="acc-x">+</span></summary><div class="acc-body"><div class="acc-inner"><p>' + (p.shipping || 'Ships by Ground Service within 1\u20132 Business Days, no air, by regulation. All sales are final; wrong, damaged, defective, or lost is ours to make right at our cost. <a href="shipping.html">Shipping Policy</a> · <a href="returns.html">Returns &amp; Refunds</a>') + '</p></div></div></details>' +
+      '</div>' +
+    '</div>' +
+  '</div>' +
+  (p.notes ? careNotes(p) : '');
+
+function careNotes(p){
+  var n = p.notes;
+  return '<section class="care-notes" id="letter" style="--acc:' + p.accent + '"><div class="wrap cn-wrap">' +
+    '<p class="kicker mono reveal">' + n.kicker + '</p>' +
+    '<h2 class="reveal">' + n.title + '</h2>' +
+    '<div class="cn-body">' +
+      '<p class="cn-lede reveal">' + n.intro + '</p>' +
+      (n.body ? '<p class="reveal">' + n.body + '</p>' : '') +
+      n.sections.map(function(s){
+        return '<div class="cn-sec reveal"><span class="mono cn-h">' + s.h + '</span><p>' + s.b + '</p></div>';
+      }).join('') +
+      '<p class="cn-closer reveal"><em>' + n.closer + '</em></p>' +
+      (n.footnotes ? '<div class="cn-notes reveal">' + n.footnotes.map(function(f){ return '<p>' + f + '</p>'; }).join('') + '</div>' : '') +
+    '</div>' +
+  '</div></section>';
+}
+
+  /* reveal for care notes (injected after global observer ran) */
+  var cnIO = new IntersectionObserver(function(es){
+    es.forEach(function(en){ if (en.isIntersecting){ en.target.classList.add('is-in'); cnIO.unobserve(en.target); } });
+  }, { threshold: 0.08 });
+  document.querySelectorAll('.care-notes .reveal, .pd-mantra.reveal').forEach(function(el){ cnIO.observe(el); });
+
+  /* silk accordion: one open at a time, animated unfold */
+  document.querySelectorAll('.acc summary').forEach(function(s){
+    s.addEventListener('click', function(e){
+      e.preventDefault();
+      var d = s.parentElement;
+      if (d.classList.contains('is-open')) {
+        d.classList.remove('is-open');
+        setTimeout(function(){ if (!d.classList.contains('is-open')) d.open = false; }, 580);
+        return;
+      }
+      document.querySelectorAll('.acc details.is-open').forEach(function(o){
+        o.classList.remove('is-open');
+        setTimeout(function(){ if (!o.classList.contains('is-open')) o.open = false; }, 580);
+      });
+      d.open = true;
+      requestAnimationFrame(function(){ requestAnimationFrame(function(){ d.classList.add('is-open'); }); });
+    });
+  });
+  if (location.hash === '#qa') { var qd = document.querySelector('.acc details'); if (qd) { qd.open = true; qd.classList.add('is-open'); } }
+  var ll = document.getElementById('letterLink');
+  if (ll) ll.addEventListener('click', function(e){ e.preventDefault(); var t = document.getElementById('letter'); if (t) t.scrollIntoView({ behavior: 'smooth', block: 'start' }); });
+
+  if (live){
+    document.getElementById('sizeRow').addEventListener('click', function(e){
+      var b = e.target.closest('.size-pill'); if (!b) return;
+      selSize = +b.dataset.i;
+      this.querySelectorAll('.size-pill').forEach(function(x){ x.classList.remove('is-active'); });
+      b.classList.add('is-active');
+      document.getElementById('buyPrice').textContent = window.fmt(p.sizes[selSize].price * qty);
+    });
+    document.getElementById('qMinus').onclick = function(){ qty = Math.max(1, qty-1); sync(); };
+    document.getElementById('qPlus').onclick = function(){ qty = Math.min(99, qty+1); sync(); };
+    function sync(){ document.getElementById('qVal').textContent = qty; document.getElementById('buyPrice').textContent = window.fmt(p.sizes[selSize].price * qty); }
+    document.getElementById('buyBtn').onclick = function(){ window.cartAdd(p.id, p.sizes[selSize].label, qty); };
+
+    /* Mobile sticky buy bar: appears once the main button scrolls away */
+    if (window.matchMedia('(max-width: 760px)').matches){
+      var bar = document.createElement('div');
+      bar.className = 'atc-bar';
+      bar.innerHTML = '<span class="atc-name">' + p.name + '<i id="atcPrice">' + window.fmt(p.sizes[0].price) + '</i></span>' +
+        '<button class="btn btn-acc btn-instrument atc-btn" type="button"><span class="btn-action">Add to cart</span></button>';
+      document.body.appendChild(bar);
+      bar.querySelector('.atc-btn').onclick = function(){ window.cartAdd(p.id, p.sizes[selSize].label, qty); };
+      var syncBar = function(){ document.getElementById('atcPrice').textContent = window.fmt(p.sizes[selSize].price * qty); };
+      document.getElementById('qPlus').addEventListener('click', syncBar);
+      document.getElementById('qMinus').addEventListener('click', syncBar);
+      document.getElementById('sizeRow').addEventListener('click', function(){ setTimeout(syncBar, 0); });
+      var buyRow = document.querySelector('.buy-row');
+      var bio = new IntersectionObserver(function(es){
+        es.forEach(function(en){ bar.classList.toggle('is-show', !en.isIntersecting && en.boundingClientRect.top < 0); });
+      }, { threshold: 0 });
+      bio.observe(buyRow);
+      /* hide while the cart drawer is open */
+      window.addEventListener('aleth-cart-change', function(){});
+    }
+
+  } else {
+    window.alethNotifyWire(document.getElementById('notifyForm'));
+  }
+
+  /* Related: same system first, then neighbors */
+  var rel = window.PRODUCTS.filter(function(x){ return x.system === p.system && x.id !== p.id; });
+  if (rel.length < 3){
+    var extra = window.PRODUCTS.filter(function(x){ return x.id !== p.id && rel.indexOf(x) === -1; });
+    rel = rel.concat(extra).slice(0, 3);
+  } else rel = rel.slice(0, 3);
+  document.getElementById('relatedSection').style.display = '';
+  document.getElementById('relatedGrid').innerHTML = rel.map(function(x){
+    var xLive = window.isLive(x);
+    return '<a class="t-cell' + (xLive ? '' : ' is-lab') + '" href="product.html?id=' + x.id + '" style="--cell-acc:' + x.accentSoft + ';--cell-ink:' + x.accent + '">' +
+      '<span class="t-code">' + x.code + (xLive ? '' : ' · IN THE LAB') + '</span>' +
+      '<span><span class="t-name">' + x.name + '</span><span class="t-kind" style="display:block">' + x.kind + '</span></span>' +
+      '<span class="t-foot"><span class="t-price">' + (xLive ? window.fmt(x.sizes[0].price) : 'In the lab') + '</span><span class="t-arrow">&rarr;</span></span>' +
+    '</a>';
+  }).join('');
+})();
+</script>
+</body>
+</html>
