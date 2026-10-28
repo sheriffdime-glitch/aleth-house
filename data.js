@@ -121,7 +121,7 @@ window.PRODUCTS = [
     kind:'Glass cleaner',
     sizes:[{label:'16 oz', price:1799}],
     line:'Vanishes. So does the film.',
-    mantra:'Flash-dry · Ammonia-free, tint-safe',
+    mantra:'IPA-based · Flash-dry · Ammonia-free, tint-safe',
     directions:'Apply to the glass or a clean glass towel.<br>Wipe the surface clean.<br>Flip to the dry side, or a second towel, and finish.<br>On exterior glass, work panel by panel in shade.<br>Never on hot glass or in direct sun.',
     surfaces:'For: Interior &amp; exterior glass · Mirrors · Tint film (ammonia-free) · Glass tabletops &amp; displays<br>Not for: Acrylic &amp; plexiglass · <a href="product.html?id=interior">Screens, that is VELLUM\u2019s job</a> · Hot surfaces',
     file:'The complete safety data sheet for SPECTRE, filed under SDS-AL-05 in the ALETH SDS Library. Hazards, handling, storage, transport, properly documented.<br><a href="sds.html">Open the SDS &#8599;</a>',
