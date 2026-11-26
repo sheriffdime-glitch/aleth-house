@@ -31,7 +31,17 @@
     + '.adk-launch:hover{transform:translateY(-2px)}'
     + '.adk-launch:focus-visible{outline:2px solid #A81E1E;outline-offset:4px}'
     + '.adk-orb{width:48px;height:48px;display:grid;place-items:center;flex:0 0 48px;color:#FBFAF7;'
-    + 'transform-origin:50% 50%}'
+    + 'transform-origin:50% 50%;border-radius:50%;overflow:hidden;position:relative}'
+    + '.adk-orb:after{content:"";position:absolute;inset:-40% -120%;pointer-events:none;'
+    + 'background:linear-gradient(102deg,transparent 42%,rgba(255,255,255,.55) 50%,transparent 58%);'
+    + 'opacity:0}'
+    + '.adk-launch[data-state="orb"] .adk-orb:after{animation:adk-glint 9.5s cubic-bezier(.4,0,.6,1) infinite}'
+    + '@keyframes adk-glint{0%,86%{opacity:0;transform:translateX(-70%)}90%{opacity:.9}'
+    + '96%{opacity:0;transform:translateX(70%)}100%{opacity:0;transform:translateX(70%)}}'
+    + '.adk-launch[data-state="orb"] .adk-gem{animation:adk-breathe 9.5s ease-in-out infinite}'
+    + '@keyframes adk-breathe{0%,100%{opacity:1}50%{opacity:.72}}'
+    + '.adk-orb.spin{animation:adk-turn .62s cubic-bezier(.32,.72,0,1) both}'
+    + '@keyframes adk-turn{from{transform:rotate(0)}to{transform:rotate(360deg)}}'
     + '.adk-gem{width:25px;height:25px;display:block}'
     + '.adk-launch[data-state="orb"] .adk-orb{animation:adk-rock 3.2s cubic-bezier(.45,0,.55,1) infinite}'
     + '@keyframes adk-rock{0%,54%,100%{transform:rotate(0)}'
@@ -75,8 +85,8 @@
     + '.adk-form button:disabled{opacity:.4}'
     + '.adk-foot{font-size:12px;color:#57574F;padding:.15rem 1rem .9rem;line-height:1.5}'
     + '@media(max-width:520px){.adk-panel{right:0;bottom:0;width:100vw;height:88vh;border-radius:0}}'
-    + '@media(prefers-reduced-motion:reduce){.adk-orb,.adk-launch,.adk-panel{animation:none!important;'
-    + 'transition:none!important}}';
+    + '@media(prefers-reduced-motion:reduce){.adk-orb,.adk-orb:after,.adk-gem,.adk-launch,.adk-panel{'
+    + 'animation:none!important;transition:none!important}}';
 
   var style = document.createElement('style');
   style.textContent = css;
@@ -179,6 +189,12 @@
 
   /* 3 — tap once for the label; tap again to open. Idle label folds in 3.5s */
   launch.addEventListener('click', function () {
+    var orbEl = launch.querySelector('.adk-orb');
+    orbEl.classList.remove('spin');
+    void orbEl.offsetWidth;          /* restart the animation */
+    orbEl.classList.add('spin');
+    setTimeout(function () { orbEl.classList.remove('spin'); }, 650);
+
     if (launch.dataset.state === 'label') { openPanel(); return; }
     setState('label');
     foldAfter(3500);
