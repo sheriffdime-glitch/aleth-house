@@ -1,8 +1,11 @@
 /* ALETH Desk widget — the diamond launcher.
-   Life cycle:  "◆ Ask the desk" pill shows for ~6 seconds → it collapses to a slowly rocking
-                diamond → a quiet reminder appears at most twice per visit → tap the diamond
-                to reveal the label → tap again to open the desk.
-   It never opens itself. It never pings. It never moves the page.
+   King's spec (11/26):
+     · label on arrival for 5s  ->  folds down to the diamond
+     · the diamond rocks quickly, left then right
+     · scrolling past the guide wakes the label once, then it folds again
+     · tap the diamond once -> label opens; untouched for 3.5s -> folds back
+     · tap again -> the desk opens
+   It never opens itself, never pings, never moves the page.
    The model key is never here; this only talks to the desk endpoint. */
 (function () {
   if (window.__alethDeskLoaded) return;
@@ -11,36 +14,33 @@
   var API = "https://proposed-coal-showed-arrested.trycloudflare.com";
   var CODE = "U26XxxAub-kA";
 
+  /* a cut diamond, drawn rather than typed */
+  var GEM = '<svg class="adk-gem" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
+    + '<path d="M12 2.8 21.2 12 12 21.2 2.8 12Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>'
+    + '<path d="M12 2.8v18.4M2.8 12h18.4" fill="none" stroke="currentColor" stroke-width=".5" opacity=".38"/>'
+    + '</svg>';
+
   var css = ''
     /* ---------- launcher ---------- */
     + '.adk-launch{position:fixed;right:20px;bottom:20px;z-index:2147482000;display:flex;align-items:center;'
     + 'border:1px solid #101010;background:#101010;color:#FBFAF7;border-radius:999px;cursor:pointer;padding:0;'
-    + 'overflow:hidden;box-shadow:0 14px 36px rgba(16,16,16,.26),0 1px 3px rgba(16,16,16,.18);'
-    + 'transition:transform .45s cubic-bezier(.22,1,.36,1),background .3s ease}'
+    + 'overflow:hidden;box-shadow:0 12px 30px rgba(16,16,16,.24),0 1px 2px rgba(16,16,16,.16);'
+    + 'transition:transform .4s cubic-bezier(.22,1,.36,1),background .3s ease}'
     + '.adk-launch:hover{transform:translateY(-2px)}'
     + '.adk-launch:focus-visible{outline:2px solid #A81E1E;outline-offset:4px}'
-    + '.adk-orb{width:48px;height:48px;display:grid;place-items:center;flex:0 0 48px;font-size:15px;'
-    + 'line-height:1;color:#FBFAF7;transform-origin:50% 50%}'
-    + '.adk-launch[data-state="orb"] .adk-orb{animation:adk-rock 7s cubic-bezier(.45,0,.55,1) infinite}'
-    + '@keyframes adk-rock{0%,62%,100%{transform:rotate(0)}'
-    + '70%{transform:rotate(-24deg)}76%{transform:rotate(21deg)}82%{transform:rotate(-9deg)}88%{transform:rotate(4deg)}}'
-    + '.adk-label{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;'
+    + '.adk-orb{width:48px;height:48px;display:grid;place-items:center;flex:0 0 48px;color:#FBFAF7;'
+    + 'transform-origin:50% 50%}'
+    + '.adk-gem{width:18px;height:18px;display:block}'
+    + '.adk-launch[data-state="orb"] .adk-orb{animation:adk-rock 3.2s cubic-bezier(.45,0,.55,1) infinite}'
+    + '@keyframes adk-rock{0%,54%,100%{transform:rotate(0)}'
+    + '59%{transform:rotate(-28deg)}64%{transform:rotate(24deg)}69%{transform:rotate(-12deg)}75%{transform:rotate(6deg)}}'
+    + '.adk-label{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:10.5px;letter-spacing:.13em;'
     + 'text-transform:uppercase;white-space:nowrap;opacity:0;max-width:0;margin-right:0;'
-    + 'transition:opacity .35s ease .08s,max-width .55s cubic-bezier(.22,1,.36,1),margin-right .55s cubic-bezier(.22,1,.36,1)}'
+    + 'transition:opacity .28s ease .04s,max-width .46s cubic-bezier(.22,1,.36,1),margin-right .46s cubic-bezier(.22,1,.36,1)}'
     + '.adk-launch[data-state="pill"] .adk-label,.adk-launch[data-state="label"] .adk-label{'
-    + 'opacity:1;max-width:200px;margin-right:18px}'
-    + '.adk-launch[data-state="pill"]{animation:adk-in .8s cubic-bezier(.22,1,.36,1) both}'
-    + '@keyframes adk-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}'
-    /* ---------- reminder ---------- */
-    + '.adk-hint{position:fixed;right:78px;bottom:34px;z-index:2147481999;max-width:228px;'
-    + 'background:#FBFAF7;border:1px solid rgba(16,16,16,.12);color:#242424;padding:.7rem .9rem;'
-    + 'font-family:Inter,-apple-system,sans-serif;font-size:13px;line-height:1.45;'
-    + 'box-shadow:0 12px 30px rgba(16,16,16,.14);opacity:0;transform:translateX(8px);pointer-events:none;'
-    + 'transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1)}'
-    + '.adk-hint.show{opacity:1;transform:translateX(0)}'
-    + '.adk-hint:after{content:"";position:absolute;right:-5px;bottom:17px;width:8px;height:8px;background:#FBFAF7;'
-    + 'border-right:1px solid rgba(16,16,16,.12);border-bottom:1px solid rgba(16,16,16,.12);transform:rotate(-45deg)}'
-    + '@media(max-width:520px){.adk-hint{right:74px;bottom:28px;max-width:186px;font-size:12.5px}}'
+    + 'opacity:1;max-width:160px;margin-right:14px}'
+    + '.adk-launch[data-state="pill"]{animation:adk-in .7s cubic-bezier(.22,1,.36,1) both}'
+    + '@keyframes adk-in{from{opacity:0;transform:translateY(14px)}to{opacity:1;transform:translateY(0)}}'
     /* ---------- panel ---------- */
     + '.adk-panel{position:fixed;right:18px;bottom:18px;z-index:2147482001;width:min(410px,calc(100vw - 24px));'
     + 'height:min(580px,calc(100vh - 36px));background:#FBFAF7;border:1px solid rgba(16,16,16,.12);'
@@ -73,26 +73,21 @@
     + '.adk-form button:disabled{opacity:.4}'
     + '.adk-foot{font-size:12px;color:#57574F;padding:.15rem 1rem .9rem;line-height:1.5}'
     + '@media(max-width:520px){.adk-panel{right:0;bottom:0;width:100vw;height:88vh;border-radius:0}}'
-    + '@media(prefers-reduced-motion:reduce){.adk-orb,.adk-launch,.adk-panel,.adk-hint{'
-    + 'animation:none!important;transition:none!important}}';
+    + '@media(prefers-reduced-motion:reduce){.adk-orb,.adk-launch,.adk-panel{animation:none!important;'
+    + 'transition:none!important}}';
 
   var style = document.createElement('style');
   style.textContent = css;
   document.head.appendChild(style);
 
-  /* ---- launcher: diamond + label ---- */
+  /* ---- launcher ---- */
   var launch = document.createElement('button');
   launch.className = 'adk-launch';
   launch.type = 'button';
   launch.dataset.state = 'pill';
   launch.setAttribute('aria-label', 'Ask the ALETH desk');
-  launch.innerHTML = '<span class="adk-orb" aria-hidden="true">◆</span>'
+  launch.innerHTML = '<span class="adk-orb">' + GEM + '</span>'
     + '<span class="adk-label">Ask the desk</span>';
-
-  var hint = document.createElement('div');
-  hint.className = 'adk-hint';
-  hint.setAttribute('role', 'status');
-  hint.textContent = 'Questions about which bottle? Ask the desk.';
 
   /* ---- panel ---- */
   var panel = document.createElement('div');
@@ -114,7 +109,6 @@
     '<p class="adk-foot">Product questions only. Orders, shipping or returns: house@alethchemical.com</p>';
 
   document.body.appendChild(launch);
-  document.body.appendChild(hint);
   document.body.appendChild(panel);
 
   var log = panel.querySelector('.adk-log');
@@ -123,7 +117,18 @@
   var send = form.querySelector('button');
   var hist = [];
   var started = false;
-  var hintsShown = 0;
+  var autoFold = null;
+  var guideShown = false;
+
+  function setState(s) { launch.dataset.state = s; }
+
+  function foldAfter(ms) {
+    clearTimeout(autoFold);
+    autoFold = setTimeout(function () {
+      if (panel.classList.contains('open')) return;
+      if (launch.dataset.state === 'label') setState('orb');
+    }, ms);
+  }
 
   function turn(text, cls) {
     var d = document.createElement('div');
@@ -135,9 +140,9 @@
   }
 
   function openPanel() {
+    clearTimeout(autoFold);
     panel.classList.add('open');
     launch.style.display = 'none';
-    hint.classList.remove('show');
     if (!started) {
       started = true;
       turn('What are you working on — paint, glass, wheels, or interior?');
@@ -148,38 +153,39 @@
   function closePanel() {
     panel.classList.remove('open');
     launch.style.display = 'flex';
-    launch.dataset.state = 'orb';
+    setState('orb');
   }
 
-  function showHint() {
-    if (hintsShown >= 2) return;
-    if (panel.classList.contains('open')) return;
-    if (launch.style.display === 'none') return;
-    hintsShown++;
-    hint.classList.add('show');
-    setTimeout(function () { hint.classList.remove('show'); }, 7000);
-  }
-
-  /* 1 — the pill is visible on arrival, then it folds down to the diamond */
+  /* 1 — label on arrival; folds to the diamond after five seconds */
   setTimeout(function () {
     if (panel.classList.contains('open')) return;
-    launch.dataset.state = 'orb';
-    /* 2 — a quiet reminder, at most twice per visit */
-    setTimeout(showHint, 14000);
-    setTimeout(showHint, 80000);
-  }, 6000);
+    if (launch.dataset.state === 'pill') setState('orb');
+  }, 5000);
 
-  /* 3 — tap once to reveal the label, tap again to open the desk */
+  /* 2 — scrolling past the guide wakes the label once, then it folds again */
+  window.addEventListener('scroll', function () {
+    if (guideShown || panel.classList.contains('open')) return;
+    var seen = window.scrollY + window.innerHeight * 0.55;
+    if (seen > document.body.scrollHeight * 0.42) {
+      guideShown = true;
+      if (launch.dataset.state !== 'label') {
+        setState('label');
+        foldAfter(5000);
+      }
+    }
+  }, { passive: true });
+
+  /* 3 — tap once for the label; tap again to open. Idle label folds in 3.5s */
   launch.addEventListener('click', function () {
-    var s = launch.dataset.state;
-    hint.classList.remove('show');
-    if (s === 'orb') { launch.dataset.state = 'label'; return; }
-    openPanel();
+    if (launch.dataset.state === 'label') { openPanel(); return; }
+    setState('label');
+    foldAfter(3500);
   });
 
   document.addEventListener('click', function (e) {
     if (!launch.contains(e.target) && launch.dataset.state === 'label') {
-      launch.dataset.state = 'orb';
+      clearTimeout(autoFold);
+      setState('orb');
     }
   });
 
