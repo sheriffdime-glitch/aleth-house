@@ -97,7 +97,7 @@
   launch.className = 'adk-launch';
   launch.type = 'button';
   launch.dataset.state = 'pill';
-  launch.setAttribute('aria-label', 'Ask the ALETH desk');
+  launch.setAttribute('aria-label', 'Ask the desk');
   launch.innerHTML = '<span class="adk-orb">' + GEM + '</span>'
     + '<span class="adk-label">Ask the desk</span>';
 
