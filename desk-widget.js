@@ -1,5 +1,8 @@
-/* ALETH Desk widget — a floating "Ask the desk" bubble on every page.
-   Self-contained: injects its own styles, never touches the page layout.
+/* ALETH Desk widget — the diamond launcher.
+   Life cycle:  "◆ Ask the desk" pill shows for ~6 seconds → it collapses to a slowly rocking
+                diamond → a quiet reminder appears at most twice per visit → tap the diamond
+                to reveal the label → tap again to open the desk.
+   It never opens itself. It never pings. It never moves the page.
    The model key is never here; this only talks to the desk endpoint. */
 (function () {
   if (window.__alethDeskLoaded) return;
@@ -9,17 +12,42 @@
   var CODE = "U26XxxAub-kA";
 
   var css = ''
-    + '.adk-bubble{position:fixed;right:18px;bottom:18px;z-index:2147482000;'
-    + 'display:flex;align-items:center;gap:.55rem;padding:.85rem 1.1rem;border:1px solid #101010;'
-    + 'background:#101010;color:#FBFAF7;font-family:"IBM Plex Mono",ui-monospace,monospace;'
-    + 'font-size:.72rem;letter-spacing:.14em;text-transform:uppercase;cursor:pointer;'
-    + 'box-shadow:0 10px 30px rgba(16,16,16,.22)}'
-    + '.adk-bubble:hover{background:#000}'
+    /* ---------- launcher ---------- */
+    + '.adk-launch{position:fixed;right:20px;bottom:20px;z-index:2147482000;display:flex;align-items:center;'
+    + 'border:1px solid #101010;background:#101010;color:#FBFAF7;border-radius:999px;cursor:pointer;padding:0;'
+    + 'overflow:hidden;box-shadow:0 14px 36px rgba(16,16,16,.26),0 1px 3px rgba(16,16,16,.18);'
+    + 'transition:transform .45s cubic-bezier(.22,1,.36,1),background .3s ease}'
+    + '.adk-launch:hover{transform:translateY(-2px)}'
+    + '.adk-launch:focus-visible{outline:2px solid #A81E1E;outline-offset:4px}'
+    + '.adk-orb{width:48px;height:48px;display:grid;place-items:center;flex:0 0 48px;font-size:15px;'
+    + 'line-height:1;color:#FBFAF7;transform-origin:50% 50%}'
+    + '.adk-launch[data-state="orb"] .adk-orb{animation:adk-rock 7s cubic-bezier(.45,0,.55,1) infinite}'
+    + '@keyframes adk-rock{0%,62%,100%{transform:rotate(0)}'
+    + '70%{transform:rotate(-24deg)}76%{transform:rotate(21deg)}82%{transform:rotate(-9deg)}88%{transform:rotate(4deg)}}'
+    + '.adk-label{font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:11.5px;letter-spacing:.16em;'
+    + 'text-transform:uppercase;white-space:nowrap;opacity:0;max-width:0;margin-right:0;'
+    + 'transition:opacity .35s ease .08s,max-width .55s cubic-bezier(.22,1,.36,1),margin-right .55s cubic-bezier(.22,1,.36,1)}'
+    + '.adk-launch[data-state="pill"] .adk-label,.adk-launch[data-state="label"] .adk-label{'
+    + 'opacity:1;max-width:200px;margin-right:18px}'
+    + '.adk-launch[data-state="pill"]{animation:adk-in .8s cubic-bezier(.22,1,.36,1) both}'
+    + '@keyframes adk-in{from{opacity:0;transform:translateY(16px)}to{opacity:1;transform:translateY(0)}}'
+    /* ---------- reminder ---------- */
+    + '.adk-hint{position:fixed;right:78px;bottom:34px;z-index:2147481999;max-width:228px;'
+    + 'background:#FBFAF7;border:1px solid rgba(16,16,16,.12);color:#242424;padding:.7rem .9rem;'
+    + 'font-family:Inter,-apple-system,sans-serif;font-size:13px;line-height:1.45;'
+    + 'box-shadow:0 12px 30px rgba(16,16,16,.14);opacity:0;transform:translateX(8px);pointer-events:none;'
+    + 'transition:opacity .55s ease,transform .55s cubic-bezier(.22,1,.36,1)}'
+    + '.adk-hint.show{opacity:1;transform:translateX(0)}'
+    + '.adk-hint:after{content:"";position:absolute;right:-5px;bottom:17px;width:8px;height:8px;background:#FBFAF7;'
+    + 'border-right:1px solid rgba(16,16,16,.12);border-bottom:1px solid rgba(16,16,16,.12);transform:rotate(-45deg)}'
+    + '@media(max-width:520px){.adk-hint{right:74px;bottom:28px;max-width:186px;font-size:12.5px}}'
+    /* ---------- panel ---------- */
     + '.adk-panel{position:fixed;right:18px;bottom:18px;z-index:2147482001;width:min(410px,calc(100vw - 24px));'
     + 'height:min(580px,calc(100vh - 36px));background:#FBFAF7;border:1px solid rgba(16,16,16,.12);'
     + 'border-radius:12px;overflow:hidden;box-shadow:0 28px 70px rgba(16,16,16,.34),0 2px 8px rgba(16,16,16,.12);'
     + 'display:none;flex-direction:column;font-family:Inter,-apple-system,sans-serif}'
-    + '.adk-panel.open{display:flex}'
+    + '.adk-panel.open{display:flex;animation:adk-panel-in .45s cubic-bezier(.22,1,.36,1) both}'
+    + '@keyframes adk-panel-in{from{opacity:0;transform:translateY(18px) scale(.997)}to{opacity:1;transform:none}}'
     + '.adk-head{display:flex;align-items:center;justify-content:space-between;gap:.75rem;'
     + 'padding:.9rem 1rem;border-bottom:1px solid rgba(16,16,16,.1)}'
     + '.adk-head b{font-family:"Cormorant Garamond",Georgia,serif;font-weight:400;font-size:1.15rem;color:#101010}'
@@ -44,18 +72,29 @@
     + 'text-transform:uppercase;cursor:pointer}'
     + '.adk-form button:disabled{opacity:.4}'
     + '.adk-foot{font-size:12px;color:#57574F;padding:.15rem 1rem .9rem;line-height:1.5}'
-    + '@media(max-width:520px){.adk-panel{right:0;bottom:0;width:100vw;height:88vh;border-left:0;border-right:0}}';
+    + '@media(max-width:520px){.adk-panel{right:0;bottom:0;width:100vw;height:88vh;border-radius:0}}'
+    + '@media(prefers-reduced-motion:reduce){.adk-orb,.adk-launch,.adk-panel,.adk-hint{'
+    + 'animation:none!important;transition:none!important}}';
 
   var style = document.createElement('style');
   style.textContent = css;
   document.head.appendChild(style);
 
-  var bubble = document.createElement('button');
-  bubble.className = 'adk-bubble';
-  bubble.type = 'button';
-  bubble.setAttribute('aria-label', 'Open the ALETH desk');
-  bubble.innerHTML = '<span aria-hidden="true">◆</span> Ask the desk';
+  /* ---- launcher: diamond + label ---- */
+  var launch = document.createElement('button');
+  launch.className = 'adk-launch';
+  launch.type = 'button';
+  launch.dataset.state = 'pill';
+  launch.setAttribute('aria-label', 'Ask the ALETH desk');
+  launch.innerHTML = '<span class="adk-orb" aria-hidden="true">◆</span>'
+    + '<span class="adk-label">Ask the desk</span>';
 
+  var hint = document.createElement('div');
+  hint.className = 'adk-hint';
+  hint.setAttribute('role', 'status');
+  hint.textContent = 'Questions about which bottle? Ask the desk.';
+
+  /* ---- panel ---- */
   var panel = document.createElement('div');
   panel.className = 'adk-panel';
   panel.setAttribute('role', 'dialog');
@@ -74,7 +113,8 @@
     '<button type="submit">Send</button></form>' +
     '<p class="adk-foot">Product questions only. Orders, shipping or returns: house@alethchemical.com</p>';
 
-  document.body.appendChild(bubble);
+  document.body.appendChild(launch);
+  document.body.appendChild(hint);
   document.body.appendChild(panel);
 
   var log = panel.querySelector('.adk-log');
@@ -83,6 +123,7 @@
   var send = form.querySelector('button');
   var hist = [];
   var started = false;
+  var hintsShown = 0;
 
   function turn(text, cls) {
     var d = document.createElement('div');
@@ -93,25 +134,58 @@
     return d;
   }
 
-  function open() {
+  function openPanel() {
     panel.classList.add('open');
-    bubble.style.display = 'none';
+    launch.style.display = 'none';
+    hint.classList.remove('show');
     if (!started) {
       started = true;
       turn('What are you working on — paint, glass, wheels, or interior?');
     }
-    setTimeout(function () { input.focus(); }, 60);
+    setTimeout(function () { input.focus(); }, 90);
   }
 
-  function close() {
+  function closePanel() {
     panel.classList.remove('open');
-    bubble.style.display = 'flex';
+    launch.style.display = 'flex';
+    launch.dataset.state = 'orb';
   }
 
-  bubble.addEventListener('click', open);
-  panel.querySelector('.adk-x').addEventListener('click', close);
+  function showHint() {
+    if (hintsShown >= 2) return;
+    if (panel.classList.contains('open')) return;
+    if (launch.style.display === 'none') return;
+    hintsShown++;
+    hint.classList.add('show');
+    setTimeout(function () { hint.classList.remove('show'); }, 7000);
+  }
+
+  /* 1 — the pill is visible on arrival, then it folds down to the diamond */
+  setTimeout(function () {
+    if (panel.classList.contains('open')) return;
+    launch.dataset.state = 'orb';
+    /* 2 — a quiet reminder, at most twice per visit */
+    setTimeout(showHint, 14000);
+    setTimeout(showHint, 80000);
+  }, 6000);
+
+  /* 3 — tap once to reveal the label, tap again to open the desk */
+  launch.addEventListener('click', function () {
+    var s = launch.dataset.state;
+    hint.classList.remove('show');
+    if (s === 'orb') { launch.dataset.state = 'label'; return; }
+    openPanel();
+  });
+
+  document.addEventListener('click', function (e) {
+    if (!launch.contains(e.target) && launch.dataset.state === 'label') {
+      launch.dataset.state = 'orb';
+    }
+  });
+
+  panel.querySelector('.adk-x').addEventListener('click', closePanel);
   document.addEventListener('keydown', function (e) {
-    if (e.key === 'Escape' && panel.classList.contains('open')) close();
+    if (e.key === 'Escape' && panel.classList.contains('open')) closePanel();
   });
 
   panel.querySelector('.adk-chips').addEventListener('click', function (e) {
