@@ -16,8 +16,10 @@
 
   /* a cut diamond, drawn rather than typed */
   var GEM = '<svg class="adk-gem" viewBox="0 0 24 24" aria-hidden="true" focusable="false">'
-    + '<path d="M12 2.8 21.2 12 12 21.2 2.8 12Z" fill="none" stroke="currentColor" stroke-width="1.3" stroke-linejoin="round"/>'
-    + '<path d="M12 2.8v18.4M2.8 12h18.4" fill="none" stroke="currentColor" stroke-width=".5" opacity=".38"/>'
+    + '<path d="M12 2.4 20.6 8.9 12 21.6 3.4 8.9Z" fill="none" stroke="currentColor" stroke-width="1.15" stroke-linejoin="round"/>'
+    + '<path d="M3.4 8.9h17.2" fill="none" stroke="currentColor" stroke-width=".7" opacity=".85"/>'
+    + '<path d="M12 2.4 7.6 8.9M12 2.4l4.4 6.5" fill="none" stroke="currentColor" stroke-width=".7" opacity=".85"/>'
+    + '<path d="M7.6 8.9 12 21.6M16.4 8.9 12 21.6" fill="none" stroke="currentColor" stroke-width=".7" opacity=".55"/>'
     + '</svg>';
 
   var css = ''
@@ -30,7 +32,7 @@
     + '.adk-launch:focus-visible{outline:2px solid #A81E1E;outline-offset:4px}'
     + '.adk-orb{width:48px;height:48px;display:grid;place-items:center;flex:0 0 48px;color:#FBFAF7;'
     + 'transform-origin:50% 50%}'
-    + '.adk-gem{width:18px;height:18px;display:block}'
+    + '.adk-gem{width:25px;height:25px;display:block}'
     + '.adk-launch[data-state="orb"] .adk-orb{animation:adk-rock 3.2s cubic-bezier(.45,0,.55,1) infinite}'
     + '@keyframes adk-rock{0%,54%,100%{transform:rotate(0)}'
     + '59%{transform:rotate(-28deg)}64%{transform:rotate(24deg)}69%{transform:rotate(-12deg)}75%{transform:rotate(6deg)}}'
