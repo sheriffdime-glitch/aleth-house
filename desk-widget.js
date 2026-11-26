@@ -26,7 +26,7 @@
     /* ---------- launcher ---------- */
     + '.adk-launch{position:fixed;right:20px;bottom:20px;z-index:2147482000;display:flex;align-items:center;'
     + 'border:1px solid #101010;background:#101010;color:#FBFAF7;border-radius:999px;cursor:pointer;padding:0;'
-    + 'overflow:hidden;box-shadow:0 12px 30px rgba(16,16,16,.24),0 1px 2px rgba(16,16,16,.16);'
+    + 'overflow:hidden;'
     + 'transition:transform .4s cubic-bezier(.22,1,.36,1),background .3s ease}'
     + '.adk-launch:hover{transform:translateY(-2px)}'
     + '.adk-launch:focus-visible{outline:2px solid #A81E1E;outline-offset:4px}'
